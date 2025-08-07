@@ -60,16 +60,8 @@ database.default.DBDriver = MySQLi
 
 Either run the migration (if provided), or run this SQL manually:
 
-```sql
-CREATE TABLE users (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  first_name VARCHAR(100) NOT NULL,
-  last_name VARCHAR(100) NOT NULL,
-  email VARCHAR(255) UNIQUE NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  dob DATE NULL,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+```bash
+php spark migrate
 ```
 
 5. **Start the development server:**
@@ -78,7 +70,7 @@ CREATE TABLE users (
 php spark serve
 ```
 
-> Server runs at http://localhost:8080
+> Server runs at http://localhost:9000
 
 ## 🌐 Frontend Setup (React.js)
 
