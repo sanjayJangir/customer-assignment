@@ -1,0 +1,23 @@
+.login-wrapper {
+  background: linear-gradient(135deg, #81c784, #388e3c);
+}
+
+.login-box {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+}
+
+.login-box h2 {
+  color: #388e3c;
+}
+
+input.form-control {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button.btn-primary {
+  border-radius: 8px;
+}

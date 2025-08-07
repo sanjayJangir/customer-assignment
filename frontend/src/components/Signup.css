@@ -1,0 +1,39 @@
+.signup-wrapper {
+  background: linear-gradient(135deg, #81c784, #388e3c);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.signup-box {
+  background: white;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+}
+
+.signup-box h2 {
+  color: #388e3c;
+}
+
+input.form-control {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button.btn-success {
+  border-radius: 8px;
+}
+
+.alert {
+  font-size: 0.9rem;
+}
+
+.text-center a {
+  color: #388e3c;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.text-center a:hover {
+  text-decoration: underline;
+}
