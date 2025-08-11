@@ -8,6 +8,7 @@ const Signup = () => {
     first_name: "",
     last_name: "",
     email: "",
+    role: "",
     password: "",
     confirm_password: "",
     date_of_birth: "",
@@ -32,7 +33,10 @@ const Signup = () => {
 
     if (!form.first_name.trim())
       newErrors.first_name = "First name is required";
+
     if (!form.last_name.trim()) newErrors.last_name = "Last name is required";
+
+    if (!form.role.trim()) newErrors.role = "Role is required";
 
     if (!form.email.trim()) {
       newErrors.email = "Email is required";
@@ -62,6 +66,7 @@ const Signup = () => {
     try {
       const data = new FormData();
       for (let key in form) data.append(key, form[key]);
+      console.log("Submitting data:", Object.fromEntries(data.entries()));
 
       const response = await api.post("/register", data);
       if (response.data.status) {
@@ -70,6 +75,7 @@ const Signup = () => {
           first_name: "",
           last_name: "",
           email: "",
+          role: "",
           password: "",
           confirm_password: "",
           date_of_birth: "",
@@ -120,6 +126,12 @@ const Signup = () => {
               placeholder: "Enter your email",
             },
             {
+              name: "role",
+              label: "Role",
+              type: "select",
+              placeholder: "Please select role",
+            },
+            {
               name: "password",
               label: "Password",
               type: "password",
@@ -139,18 +151,34 @@ const Signup = () => {
             },
           ].map((input) => (
             <div className="form-group mb-3" key={input.name}>
-              <label>{input.label}</label>
-              <input
-                type={input.type}
-                name={input.name}
-                className={`form-control ${
-                  errors[input.name] ? "is-invalid" : ""
-                }`}
-                placeholder={input.placeholder}
-                value={form[input.name]}
-                onChange={handleChange}
-                required
-              />
+              <label for={input.name}>{input.label}</label>
+              {input.type === "select" ? (
+                <select
+                  name={input.name}
+                  className={`form-control ${
+                    errors[input.name] ? "is-invalid" : ""
+                  }`}
+                  value={form[input.name]}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Please select role</option>
+                  <option value="user">User</option>
+                  <option value="admin">Admin</option>
+                </select>
+              ) : (
+                <input
+                  type={input.type}
+                  name={input.name}
+                  className={`form-control ${
+                    errors[input.name] ? "is-invalid" : ""
+                  }`}
+                  placeholder={input.placeholder}
+                  value={form[input.name]}
+                  onChange={handleChange}
+                  required
+                />
+              )}
               {errors[input.name] && (
                 <div className="invalid-feedback">{errors[input.name]}</div>
               )}

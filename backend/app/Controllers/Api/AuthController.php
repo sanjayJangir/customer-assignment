@@ -32,6 +32,7 @@ class AuthController extends ResourceController {
         'password'         => 'required|min_length[6]',
         'confirm_password' => 'required|matches[password]',
         'date_of_birth'    => 'required|valid_date[Y-m-d]',
+        'role'    => 'required',
       ];
 
       if (!$this->validate($rules)) {

@@ -53,10 +53,16 @@ class UserRepository implements UserInterface {
   }
 
   public function allExcept($currentUserId) {
-    $users = $this->model
-      ->where('id !=', $currentUserId)
-      ->findAll();
-
+    $get_users_detils = $this->model->find($currentUserId);
+    if ($get_users_detils['role'] == "admin") {
+      $users = $this->model
+        ->where('id !=', $currentUserId)
+        ->findAll();
+    } else {
+      $users = $this->model
+        ->where('id', $currentUserId)
+        ->findAll();
+    }
     return array_map(function ($user) {
       unset($user['password'], $user['deleted_at']);
       return $user;

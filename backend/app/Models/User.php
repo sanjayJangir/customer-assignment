@@ -19,6 +19,7 @@ class User extends Model {
     'email',
     'password',
     'dob',
+    'role',
     'created_at',
     'updated_at',
     'deleted_at'

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:9000/api", // ✅ Global API prefix
+  baseURL: "http://localhost:8080/api", // ✅ Global API prefix
   headers: {
     "Content-Type": "multipart/form-data",
   },
